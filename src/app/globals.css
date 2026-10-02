@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Colour tokens. Components use the Tailwind names (bg-background, text-muted, border-rule, ...), never raw colours. */
+:root {
+  --background: #fbfaf7;
+  --foreground: #1b1a17;
+  --muted: #5d5a52;
+  --rule: #e4e0d6;
+  --accent: #2447d9;
+  --surface: #f2efe8;
+
+  /* Shiki's css-variables theme (src/lib/markdown.ts). */
+  --code-foreground: #1b1a17;
+  --code-background: var(--surface);
+  --code-token-comment: #6e6a60;
+  --code-token-keyword: #8a2a9e;
+  --code-token-string: #1f7a3a;
+  --code-token-function: #2447d9;
+  --code-token-constant: #a24a00;
+  --code-token-parameter: #1b1a17;
+  --code-token-punctuation: #5d5a52;
+  --code-token-string-expression: #1f7a3a;
+  --code-token-link: #2447d9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #141413;
+    --foreground: #ecebe6;
+    --muted: #a6a39a;
+    --rule: #2d2c29;
+    --accent: #8ea6ff;
+    --surface: #1d1c1a;
+
+    --code-foreground: #ecebe6;
+    --code-token-comment: #8d8a80;
+    --code-token-keyword: #d79bf0;
+    --code-token-string: #8fd19e;
+    --code-token-function: #8ea6ff;
+    --code-token-constant: #f0b37e;
+    --code-token-parameter: #ecebe6;
+    --code-token-punctuation: #a6a39a;
+    --code-token-string-expression: #8fd19e;
+    --code-token-link: #8ea6ff;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Rendered topic and term bodies. */
+.prose {
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+.prose > * + * {
+  margin-top: 1.1em;
+}
+.prose h2 {
+  margin-top: 2em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.prose h3 {
+  margin-top: 1.6em;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose blockquote {
+  border-left: 3px solid var(--rule);
+  padding-left: 1em;
+  color: var(--muted);
+}
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface);
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+}
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  overflow-x: auto;
+  padding: 1em;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+.prose th,
+.prose td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5em 0.6em;
+  text-align: left;
+}
